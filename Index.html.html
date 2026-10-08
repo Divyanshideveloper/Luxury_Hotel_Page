@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Grand Obsidian | Ultra-Luxury Hotel</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS VARIABLES FOR ULTRA LUXURY THEME */
+        :root {
+            --bg-primary: #0c0d0f; /* Obsidian Black */
+            --bg-secondary: #141619; /* Lighter Dark Gray */
+            --gold: #c5a880; /* Soft Metallic Gold */
+            --gold-hover: #e0c5a2;
+            --text-light: #f5f5f7; /* Off White */
+            --text-muted: #a0a5ad; /* Muted Slate */
+            --font-luxury: 'Cormorant Garamond', serif;
+            --font-clean: 'Montserrat', sans-serif;
+            --transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        /* GLOBAL STYLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-light);
+            font-family: var(--font-clean);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--font-luxury);
+            font-weight: 400;
+            letter-spacing: 2px;
+            color: var(--gold);
+        }
+
+        /* PREMIUM NAVIGATION */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 25px 50px;
+            background: rgba(12, 13, 15, 0.85);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            border-bottom: 1px solid rgba(197, 168, 128, 0.1);
+        }
+
+        .logo {
+            font-family: var(--font-luxury);
+            font-size: 24px;
+            font-weight: 600;
+            text-decoration: none;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 300;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(12, 13, 15, 0.4), rgba(12, 13, 15, 0.9)), url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .promo-badge {
+            border: 1px solid var(--gold);
+            padding: 8px 20px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--gold);
+            margin-bottom: 25px;
+            background: rgba(197, 168, 128, 0.05);
+        }
+
+        .hero h1 {
+            font-size: clamp(40px, 6vw, 80px);
+            line-height: 1.1;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+
+        .btn-luxury {
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--text-light);
+            padding: 15px 40px;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-luxury:hover {
+            background: var(--gold);
+            color: var(--bg-primary);
+            box-shadow: 0 0 20px rgba(197, 168, 128, 0.3);
+        }
+
+        /* EXPERIENCE & TEXT SECTIONS */
+        .section-padding {
+            padding: 100px 10%;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        /* GRID: LUXURY ROOMS & SUITES */
+        .suites-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .suite-card {
+            background: var(--bg-secondary);
+            border: 1px solid rgba(197, 168, 128, 0.05);
+            border-bottom: 3px solid transparent;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .suite-card:hover {
+            transform: translateY(-10px);
+            border-bottom-color: var(--gold);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .suite-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            filter: grayscale(20%);
+            transition: var(--transition);
+        }
+
+        .suite-card:hover .suite-img {
+            filter: grayscale(0%);
+        }
+
+        .suite-info {
+            padding: 30px;
+        }
+
+        .suite-info h3 {
+            font-size: 26px;
+            margin-bottom: 10px;
+        }
+
+        .suite-price {
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .suite-price span {
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        /* ALTERNATING FLEXBOX LAYOUT (PROMOTIONS) */
+        .promo-row {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            margin-bottom: 80px;
+        }
+
+        .promo-row:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .promo-content {
+            flex: 1;
+        }
+
+        .promo-content h3 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .promo-content p {
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            font-size: 15px;
+        }
+
+        .promo-img-wrapper {
+            flex: 1;
+            overflow: hidden;
+            border: 1px solid rgba(197, 168, 128, 0.2);
+        }
+
+        .promo-img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #060708;
+            padding: 50px 20px;
+            text-align: center;
+            border-top: 1px solid rgba(197, 168, 128, 0.05);
+            color: var(--text-muted);
+            font-size: 13px;
+            letter-spacing: 1px;
+        }
+
+        /* --- DYNAMIC JAVASCRIPT MODAL POPUP --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(12, 13, 15, 0.9);
+            backdrop-filter: blur(8px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: var(--bg-secondary);
+            border: 1px solid var(--gold);
+            padding: 40px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: transparent;
+            border: none;
+            color: var(--gold);
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            color: var(--text-muted);
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            background: var(--bg-primary);
+            border: 1px solid rgba(197, 168, 128, 0.3);
+            padding: 12px;
+            color: var(--text-light);
+            font-family: var(--font-clean);
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        .bill-summary {
+            background: rgba(197, 168, 128, 0.05);
+            border: 1px dashed rgba(197, 168, 128, 0.3);
+            padding: 15px;
+            margin-bottom: 20px;
+            font-size: 13px;
+        }
+
+        .bill-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+
+        .bill-total {
+            border-top: 1px solid rgba(197, 168, 128, 0.3);
+            padding-top: 5px;
+            font-weight: 600;
+            color: var(--gold);
+        }
+
+        /* --- HIGH-TECH AI MODE BOT INTERFACE --- */
+        .ai-bubble {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--gold);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 999;
+            box-shadow: 0 0 20px rgba(197, 168, 128, 0.2);
+            transition: var(--transition);
+        }
+
+        .ai-bubble:hover {
+            transform: scale(1.1);
+            background: var(--gold);
+        }
+
+        .ai-bubble svg {
+            width: 28px;
+            height: 28px;
+            fill: var(--gold);
+            transition: var(--transition);
+        }
+
+        .ai-bubble:hover svg {
+            fill: var(--bg-primary);
+        }
+
+        .ai-pulse {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 1px solid var(--gold);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+            pointer-events: none;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.8; }
+            100% { transform: scale(1.4); opacity: 0; }
+        }
+
+        .ai-chat-window {
+            position: fixed;
+            bottom: 105px;
+            right: 30px;
+            width: 360px;
+            height: 480px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--gold);
+            display: none;
+            flex-direction: column;
+            z-index: 999;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+        }
+
+        .ai-header {
+            background: rgba(197, 168, 128, 0.1);
+            padding: 15px 20px;
+            border-bottom: 1px solid rgba(197, 168, 128, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .ai-header h4 {
+            font-family: var(--font-luxury);
+            font-size: 18px;
+            color: var(--gold);
+        }
+
+        .ai-close {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .ai-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .msg {
+            max-width: 80%;
+            padding: 10px 14px;
+            font-size: 13px;
+            border-radius: 4px;
+        }
+
+        .msg.bot {
+            background: rgba(255,255,255,0.03);
+            border-left: 2px solid var(--gold);
+            align-self: flex-start;
+        }
+
+        .msg.user {
+            background: rgba(197, 168, 128, 0.15);
+            color: var(--text-light);
+            align-self: flex-end;
+            border-right: 2px solid var(--gold);
+        }
+
+        .ai-prompts {
+            padding: 10px;
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            border-top: 1px solid rgba(197, 168, 128, 0.1);
+        }
+
+        .prompt-btn {
+            background: transparent;
+            border: 1px solid rgba(197, 168, 128, 0.4);
+            color: var(--gold);
+            padding: 6px 12px;
+            font-size: 11px;
+            cursor: pointer;
+            border-radius: 20px;
+            transition: var(--transition);
+        }
+
+        .prompt-btn:hover {
+            background: rgba(197, 168, 128, 0.1);
+            border-color: var(--gold);
+        }
+
+        .ai-input-area {
+            display: flex;
+            border-top: 1px solid rgba(197, 168, 128, 0.2);
+        }
+
+        .ai-input-area input {
+            flex: 1;
+            background: var(--bg-primary);
+            border: none;
+            padding: 15px;
+            color: var(--text-light);
+            font-size: 13px;
+        }
+
+        .ai-input-area input:focus {
+            outline: none;
+        }
+
+        .ai-send-btn {
+            background: transparent;
+            border: none;
+            color: var(--gold);
+            padding: 0 20px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        /* RESPONSIVE MEDIA QUERIES */
+        @media (max-width: 768px) {
+            nav { padding: 20px; }
+            .nav-links { display: none; }
+            .promo-row { flex-direction: column !important; gap: 30px; }
+            .section-padding { padding: 60px 5%; }
+            .ai-chat-window { width: 300px; right: 15px; bottom: 95px; }
+            .ai-bubble { right: 15px; bottom: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- STYLISH NAV BAR -->
+    <nav>
+        <a href="#" class="logo">Obsidian</a>
+        <ul class="nav-links">
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#suites">Suites</a></li>
+            <li><a href="#dining">Wellness</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="hero">
+        <div class="promo-badge">Limited Time Autumn Promotion</div>
+        <h1>The Art of Pure Luxury</h1>
+        <button class="btn-luxury" onclick="openModal('Grand Presidential Suite', 75000)">Reserve Your Sanctuary</button>
+    </header>
+
+    <!-- MOOD EXPERIENCE -->
+    <section id="experience" class="section-padding">
+        <div class="section-header">
+            <h2>Designed to Mesmerize</h2>
+            <p>Every element is handcrafted for an unforgettable escape</p>
+        </div>
+        
+        <div class="promo-row">
+            <div class="promo-content">
+                <h3>Private Infinity Sanctuary</h3>
+                <p>Overlooking zero-edge scenic horizons, our custom heated suites combine majestic architectural structures with organic local elements. Experience absolute isolation and bespoke hospitality.</p>
+                <button class="btn-luxury" onclick="openModal('Infinity Pool Suite', 45000)">Explore Room</button>
+            </div>
+            <div class="promo-img-wrapper">
+                <img class="promo-img" src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=800&q=80" alt="Infinity Pool">
+            </div>
+        </div>
+    </section>
+
+    <!-- DETAILED ROOMS SECTION (GRID) -->
+    <section id="suites" class="section-padding" style="background: #090a0b;">
+        <div class="section-header">
+            <h2>The Royal Collections</h2>
+            <p>Select your tier of comfort, accompanied by 24/7 private butler services</p>
+        </div>
+
+        <div class="suites-grid">
+            <!-- Suite 1 -->
+            <div class="suite-card">
+                <img class="suite-img" src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=600&q=80" alt="Imperial Suite">
+                <div class="suite-info">
+                    <h3>Royal Amber Suite</h3>
+                    <div class="suite-price">From <span>₹35,000</span> / Night</div>
+                    <button class="btn-luxury" style="width: 100%;" onclick="openModal('Royal Amber Suite', 35000)">Book Suite</button>
+                </div>
+            </div>
+            <!-- Suite 2 -->
+            <div class="suite-card">
+                <img class="suite-img" src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=600&q=80" alt="Luxury Suite">
+                <div class="suite-info">
+                    <h3>Obsidian Diamond Vista</h3>
+                    <div class="suite-price">From <span>₹55,000</span> / Night</div>
+                    <button class="btn-luxury" style="width: 100%;" onclick="openModal('Obsidian Diamond Vista', 55000)">Book Suite</button>
+                </div>
+            </div>
+            <!-- Suite 3 -->
+            <div class="suite-card">
+                <img class="suite-img" src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=600&q=80" alt="Presidential Suite">
+                <div class="suite-info">
+                    <h3>Grand Presidential Pavilion</h3>
+                    <div class="suite-price">From <span>₹75,000</span> / Night</div>
+                    <button class="btn-luxury" style="width: 100%;" onclick="openModal('Grand Presidential Pavilion', 75000)">Book Suite</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ALTERNATING SECTION 2 -->
+    <section id="dining" class="section-padding">
+        <div class="promo-row">
+            <div class="promo-img-wrapper">
+                <img class="promo-img" src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80" alt="Luxury Spa">
+            </div>
+            <div class="promo-content">
+                <h3>Vedic Wellness Center</h3>
+                <p>Revitalize your inner self with elite, certified holistic therapy practitioners. Enjoy therapeutic custom essential oil treatments and personalized hydrotherapy systems.</p>
+                <button class="btn-luxury">View Treatments</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 The Grand Obsidian Resort & Spa. All Luxury Rights Reserved.</p>
+    </footer>
+
+    <!-- INTERACTIVE JAVASCRIPT BOOKING MODAL -->
+    <div id="bookingModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <h2 id="modalTitle" style="margin-bottom: 20px; font-size: 30px;">Book Luxury Suite</h2>
+            
+            <form id="bookingForm" onsubmit="handleFormSubmit(event)">
+                <div class="form-group">
+                    <label>Guest Full Name</label>
+                    <input type="text" id="guestName" required placeholder="Enter your highness name">
+                </div>
+                <div class="form-group">
+                    <label>Number of Nights</label>
+                    <input type="number" id="stayNights" min="1" value="1" required oninput="calculateLiveBill()">
+                </div>
+                
+                <div class="bill-summary">
+                    <div class="bill-row">
+                        <span>Base Rate (per night):</span>
+                        <span id="billBase">₹0</span>
+                    </div>
+                    <div class="bill-row">
+                        <span>Luxury GST Tax (18%):</span>
+                        <span id="billTax">₹0</span>
+                    </div>
+                    <div class="bill-row bill-total">
+                        <span>Grand Total Amount:</span>
+                        <span id="billTotal">₹0</span>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-luxury" style="width: 100%;">Confirm Luxury Reservation</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- HIGH TECH SIMULATED AI CORE MODULE -->
+    <div class="ai-bubble" onclick="toggleAiChat()">
+        <div class="ai-pulse"></div>
+        <svg viewBox="0 0 24 24">
+            <path d="M12 2A10 10 0 0 0 2 12c0 2.96 1.29 5.63 3.34 7.46L4 22l2.93-.91A9.94 9.94 0 0 0 12 22a10 10 0 0 0 10-10A10 10 0 0 0 12 2m0 2a8 8 0 0 1 8 8a8 8 0 0 1-8 8c-1.39 0-2.7-.35-3.85-1l-.22-.13l-2.07.65l.64-1.92l-.15-.22A7.9 7.9 0 0 1 4 12a8 8 0 0 1 8-8m-3 5a1.5 1.5 0 0 0-1.5 1.5A1.5 1.5 0 0 0 9 12a1.5 1.5 0 0 0 1.5-1.5A1.5 1.5 0 0 0 9 9m6 0a1.5 1.5 0 0 0-1.5 1.5a1.5 1.5 0 0 0 1.5 1.5a1.5 1.5 0 0 0 1.5-1.5A1.5 1.5 0 0 0 15 9z"/>
+        </svg>
+    </div>
+
+    <div id="aiChatWindow" class="ai-chat-window">
+        <div class="ai-header">
+            <h4>Obsidian AI Concierge</h4>
+            <button class="ai-close" onclick="toggleAiChat()">&times;</button>
+        </div>
+        <div id="aiMessages" class="ai-messages">
+            <div class="msg bot">Welcome to luxury. I am your automated AI Concierge. How may I elevate your stay structure today?</div>
+        </div>
+        <div class="ai-prompts">
+            <button class="prompt-btn" onclick="sendAiPrompt('Recommend a Suite')">Recommend a Suite</button>
+            <button class="prompt-btn" onclick="sendAiPrompt('Wellness Treatment')">Wellness Details</button>
+            <button class="prompt-btn" onclick="sendAiPrompt('Offers')">Current Offers</button>
+        </div>
+        <div class="ai-input-area">
+            <input type="text" id="aiInput" placeholder="Ask AI anything about the resort...">
+            <button class="ai-send-btn" onclick="handleAiCustomSend()">Send</button>
+        </div>
+    </div>
+
+    <!-- JAVA SCRIPT SYSTEM CODE -->
+    <script>
+        let currentRoomPrice = 0;
+        let selectedRoomName = "";
+
+        // MODAL TOGGLES
+        function openModal(roomName, price) {
+            selectedRoomName = roomName;
+            currentRoomPrice = price;
+            document.getElementById('modalTitle').innerText = roomName;
+            document.getElementById('stayNights').value = 1;
+            document.getElementById('guestName').value = "";
+            calculateLiveBill();
+            document.getElementById('bookingModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('bookingModal').style.display = 'none';
+        }
+
+        // REAL-TIME BILL CALCULATOR
+        function calculateLiveBill() {
+            const nights = parseInt(document.getElementById('stayNights').value) || 1;
+            const baseTotal = currentRoomPrice * nights;
+            const tax = Math.round(baseTotal * 0.18);
+            const absoluteGrandTotal = baseTotal + tax;
+
+            document.getElementById('billBase').innerText = "₹" + baseTotal.toLocaleString('en-IN');
+            document.getElementById('billTax').innerText = "₹" + tax.toLocaleString('en-IN');
+            document.getElementById('billTotal').innerText = "₹" + absoluteGrandTotal.toLocaleString('en-IN');
+        }
+
+        // CONFIRM RESERVATION
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('guestName').value;
+            alert(`Thank you, ${name}! Your luxurious reservation for the '${selectedRoomName}' has been successfully logged via system scripts.`);
+            closeModal();
+        }
+
+        // AI FLOATING CHAT FUNCTIONALITIES
+        function toggleAiChat() {
+            const win = document.getElementById('aiChatWindow');
+            win.style.display = (win.style.display === 'flex') ? 'none' : 'flex';
+        }
+
+        function appendMessage(text, sender) {
+            const container = document.getElementById('aiMessages');
+            const div = document.createElement('div');
+            div.className = `msg ${sender}`;
+            div.innerText = text;
+            container.appendChild(div);
+            container.scrollTop = container.scrollHeight;
+            return div;
+        }
+
+        function sendAiPrompt(promptText) {
+            appendMessage(promptText, 'user');
+            
+            // Generate simulated typing element
+            const typingDiv = appendMessage("...", 'bot');
+            
+            setTimeout(() => {
+                typingDiv.remove();
+                let reply = "I am processing your luxury request. For specific room layouts, please directly check our 'Royal Collections' grid configuration.";
+                
+                if(promptText === 'Recommend a Suite') {
+                    reply = "Our ultimate recommendation is the 'Grand Presidential Pavilion' featuring a bespoke private terrace and private heated infinity lounge structures.";
+                } else if(promptText === 'Wellness Treatment') {
+                    reply = "Our Vedic Wellness Center features high-end signature 90-minute Ayurvedic deep tissue rebalancing massages. Explore the treatments catalog section below.";
+                } else if(promptText === 'Offers') {
+                    reply = "We are currently running an exclusive 18% Luxury Tax waive-off blueprint for any bookings spanning more than 4 consecutive nights.";
+                }
+                
+                appendMessage(reply, 'bot');
+            }, 1000);
+        }
+
+        function handleAiCustomSend() {
+            const input = document.getElementById('aiInput');
+            const text = input.value.trim();
+            if(!text) return;
+
+            appendMessage(text, 'user');
+            input.value = "";
+
+            const typingDiv = appendMessage("...", 'bot');
+
+            setTimeout(() => {
+                typingDiv.remove();
+                let response = `Your query regarding "${text}" has been analyzed by our luxury neural models. We suggest scheduling an interaction with our premium hotel reception module.`;
+                appendMessage(response, 'bot');
+            }, 1200);
+        }
+    </script>
+</body>
+</html>
